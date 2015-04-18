@@ -148,6 +148,7 @@ th img {
 */
 .content {
   padding: 0 15px;
+  margin-bottom: 48px;
 }
 /*
 
@@ -277,6 +278,7 @@ b .nav-item,
 */
 .side {
   padding: 0 15px;
+  margin-bottom: 48px;
 }
 /*
 
@@ -288,23 +290,9 @@ b .nav-item,
   margin: 0 0 24px;
   padding: 0;
 }
-.similar-articles li {
+.similar-article {
   margin: 0 0 12px 0;
   padding: 0;
-}
-.similar-articles h3,
-.similar-articles p {
-  margin: 0;
-  padding: 0;
-}
-/* Odkazy pod clankem */
-/*  
-	<h2 class="similar-articles-link">
-	  <a href="podobne-clanky.html" data-replace="podobne-clanky.html" data-media="(min-width: 600px)">Podobné články</a>
-	</h2>
-*/
-.similar-articles-link {
-  text-align: center;
 }
 /*
 
