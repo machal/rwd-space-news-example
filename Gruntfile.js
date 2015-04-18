@@ -158,24 +158,33 @@ module.exports = function(grunt) {
     // --------------------------------------------
 
     imagemin: {
-      // VC logotypy
-      images: {
+      // Bitmapy v designu
+      bitmap: {
         files: [{
-          expand: true,                  // Enable dynamic expansion
-          cwd: 'src/img/',         // Src matches are relative to this path
-          src: ['**/*.jpg','**/*.png','**/*.gif','**/*.svg'],             // Actual patterns to match
-          dest: 'dist/img/'        // Destination path prefix
+          expand: true,
+          cwd: 'src/img/bitmap/',
+          src: ['**/*.jpg','**/*.png','**/*.gif'],
+          dest: 'dist/img/bitmap/'
         }]
       },
-      // Obsahove obrazky: partneri, produktove fotky…
+      // Obrazky v obsahu
       content_img: {
         files: [{
-          expand: true,                  // Enable dynamic expansion
-          cwd: 'src/content-img/',         // Src matches are relative to this path
-          src: ['**/*.jpg','**/*.png','**/*.gif','**/*.svg'],             // Actual patterns to match
-          dest: 'dist/content-img/'        // Destination path prefix
+          expand: true,
+          cwd: 'src/img/content/',
+          src: ['**/*.jpg','**/*.png','**/*.gif'],
+          dest: 'dist/img/content/'
         }]
-      }
+      },
+      // Vektory
+      vector: {
+        files: [{
+          expand: true,
+          cwd: 'src/img/vector/',
+          src: ['**/*.svg'],
+          dest: 'dist/img/vector/'
+        }]
+      },
     },
 
     // SVG2PNG
@@ -185,46 +194,9 @@ module.exports = function(grunt) {
     svg2png: {
       images: {
         files: [
-            { cwd: 'dist/img/', src: ['**/*.svg'] }
+            { cwd: 'dist/img/vector/', src: ['**/*.svg'] }
         ]
-      },
-      content_img: {
-        files: [
-            { cwd: 'dist/content-img/', src: ['**/*.svg'] }
-        ]
-      },
-    },
-
-    // responsive_images: vyroba zmensenin obrazku
-    // -------------------------------------------
-
-    responsive_images: {
-      options: {
-        sizes: [
-        {
-          name: "small",
-          width: 200,
-          quality: 80
-        },
-        {
-          name: "medium",
-          width: 400,
-          quality: 80
-        },
-        {
-          name: "large",
-          width: 600,
-          quality: 80
-        }
-        ]
-      },
-      files: {
-        expand: true,
-        src: ['**.{jpg,gif,png}'],
-        cwd: 'dist/content-img/products/original/',
-        // dest: 'dist/content-img/products/',
-        custom_dest: 'dist/content-img/products/{%= name %}/'
-      },
+      }
     },
 
     // 4) browserSync, ftp-deploy a watch
@@ -276,7 +248,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('svg', ['imagemin:content_img', 'svg2png']);
   grunt.registerTask('css', ['less:default', 'autoprefixer']);
-  grunt.registerTask('img', ['imagemin', 'svg2png', 'responsive_images']);
+  grunt.registerTask('img', ['imagemin', 'svg2png']);
   grunt.registerTask('js', ['concat', 'uglify']);
   grunt.registerTask('default', ['css', /*'js',*/ 'browserSync', 'watch']);
 

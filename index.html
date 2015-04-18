@@ -283,11 +283,18 @@
 
     </div><!-- .foot -->
 
+    <script>/*TODOBACK*/
+    if (!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1")) {
+             $('img[src*="svg"]').attr('src', function() {
+                    return $(this).attr('src')
+                        .replace('.svg', '.png');
+            });
+    }
+    </script>
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="lib/fancybox/jquery.fancybox.pack.js"></script>
-    <script src="js/index.js"></script>
-
-
+    <script src="dist/js/index.js"></script>
 
   </body>
 
