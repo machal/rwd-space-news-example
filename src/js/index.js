@@ -1,10 +1,6 @@
 $(document).ready(function(){
 
-  // body.js vyuzivame pro stylovani
-
-  $('body').addClass('js');
-
-  // Inicializace Fancyboxu
+  // Inicializace Fancyboxu TODO
 
 	$(".fancybox").fancybox();
 

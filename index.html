@@ -8,7 +8,15 @@
       Space News: USA mají po 40 letech novou kosmickou loď. Poveze nás Orion na Mars?
     </title>
 
-    <link rel="stylesheet" href="dist/css/index.css">
+    <script>
+        // document.no-js -> document.js
+        document.documentElement.className =
+           document.documentElement.className.replace("no-js","js");
+        // Picture element HTML5 shiv
+        document.createElement( "picture" );
+    </script>
+
+    <link rel="stylesheet" href="dist/css/style.css">
 
   </head>
 
@@ -18,6 +26,12 @@
 
         <p class="head-logo">
           <a href="index.html"><img src="dist/img/vector/space-news-logo-inverted.svg" width="216" height="129" alt="Space News" /></a>
+        </p>
+
+        <p class="head-hamburger">
+          <a href="#nav">
+            <img src="dist/img/vector/hamburger-menu.svg" height="24" alt="Menu" />
+          </a>
         </p>
 
     </div><!-- .head -->

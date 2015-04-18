@@ -78,104 +78,14 @@ module.exports = function(grunt) {
       }
     },
 
-    // criticalcss
+    // criticalcss TODO
     // -----------
 
     // Automaticky vytahuje kritický CSS kód (nad zlomem), který se má vložit do hlavičky
     // stránky jako inline.
 
-    criticalcss: {
-        // Detail produktu
-        detail: {
-          options: {
-              // Sablona, ze ktere se vezme vizual nad zlomem:
-              url: "http://localhost:3000/_pages/detail_biofinity.php",
-              // Vysledny CSS soubor:
-              outputfile: "dist/css/critical/detail.css",
-              // Zdrojovy CSS soubor:
-              filename: "dist/css/style.css",
-              forceInclude: [
-                ".foot",
-                ".container",
-                // TODO: divne se tady zachazi se specificnosti:
-                ".pine-horizontal .pine-level-open > .pine-level-2",
-                ".pine-horizontal .pine-level-open > .pine-level-3",
-                ".pine-level-open .pine-level-2 > li > a",
-                ".nav-lenses.pine-level-open .pine-level-3",
-                ".nav-lenses.pine-level-open .pine-level-2",
-                ".nav-lenses.pine-level-open .pine-level-2 > li",
-                ".fx-hover-fade .pine-level-3 > li > a",
-                ".js .motivator-2-rows-6-items .motivator-item-title",
-                ".box-bordered",
-              ]
-          }
-        },
-        // Kategorie
-        category: {
-          options: {
-              url: "http://localhost:3000/_pages/category.php",
-              outputfile: "dist/css/critical/category.css",
-              filename: "dist/css/style.css",
-              forceInclude: [
-                ".foot",
-                ".container",
-                // TODO: divne se tady zachazi se specificnosti:
-                ".pine-horizontal .pine-level-open > .pine-level-2",
-                ".pine-horizontal .pine-level-open > .pine-level-3",
-                ".pine-level-open .pine-level-2 > li > a",
-                ".nav-lenses.pine-level-open .pine-level-3",
-                ".nav-lenses.pine-level-open .pine-level-2",
-                ".nav-lenses.pine-level-open .pine-level-2 > li",
-                ".fx-hover-fade .pine-level-3 > li > a",
-                ".js .motivator-2-rows-6-items .motivator-item-title",
-                ".box-bordered",
-              ]
-          }
-        },
-        // Homepage
-        home: {
-          options: {
-              url: "http://localhost:3000/_pages/home.php",
-              outputfile: "dist/css/critical/home.css",
-              filename: "dist/css/style.css",
-              forceInclude: [
-                ".foot",
-                ".container",
-                // TODO: divne se tady zachazi se specificnosti:
-                ".pine-horizontal .pine-level-open > .pine-level-2",
-                ".pine-horizontal .pine-level-open > .pine-level-3",
-                ".pine-level-open .pine-level-2 > li > a",
-                ".nav-lenses.pine-level-open .pine-level-3",
-                ".nav-lenses.pine-level-open .pine-level-2",
-                ".nav-lenses.pine-level-open .pine-level-2 > li",
-                ".fx-hover-fade .pine-level-3 > li > a",
-                ".js .motivator-2-rows-6-items .motivator-item-title",
-                ".box-bordered",
-              ]
-          }
-        },
-        // Košík
-        cart: {
-          options: {
-              url: "http://localhost:3000/_pages/cart.php",
-              outputfile: "dist/css/critical/cart.css",
-              filename: "dist/css/style.css",
-              forceInclude: [
-                ".foot",
-                ".container",
-                // TODO: divne se tady zachazi se specificnosti:
-                ".pine-horizontal .pine-level-open > .pine-level-2",
-                ".pine-horizontal .pine-level-open > .pine-level-3",
-                ".pine-level-open .pine-level-2 > li > a",
-                ".nav-lenses.pine-level-open .pine-level-3",
-                ".nav-lenses.pine-level-open .pine-level-2",
-                ".fx-hover-fade .pine-level-3 > li > a",
-                ".js .motivator-2-rows-6-items .motivator-item-title",
-                ".box-bordered",
-              ]
-          }
-        }
-    },
+    // criticalcss: {
+    // },
 
     // CSSmin
     // ------
@@ -204,42 +114,42 @@ module.exports = function(grunt) {
     // Concat: spojovani JS do jednoho
     // -------------------------------
 
-    concat: {
-      // Inlinovany JS do hlavicky
-      head: {
-        src: [
-          'src/js/index-head.js', // Nase detekce atd.
-          'bower_components/picturefill/dist/picturefill.js', // Picturefill + matchmedia
-          'bower_components/loadcss/loadCSS.js' // Asynchronni nacitani CSS
-        ],
-        dest: 'dist/js/script-head.js'
-      },
-      // Zbytek JS do paticky
-      foot: {
-        src: [
-          'src/js/index.js',
-        ],
-        dest: 'dist/js/script.js'
-      }
-    },
+    // concat: {
+    //   // Inlinovany JS do hlavicky
+    //   head: {
+    //     src: [
+    //       'src/js/index-head.js', // Nase detekce atd.
+    //       'bower_components/picturefill/dist/picturefill.js', // Picturefill + matchmedia
+    //       'bower_components/loadcss/loadCSS.js' // Asynchronni nacitani CSS
+    //     ],
+    //     dest: 'dist/js/script-head.js'
+    //   },
+    //   // Zbytek JS do paticky
+    //   foot: {
+    //     src: [
+    //       'src/js/index.js',
+    //     ],
+    //     dest: 'dist/js/script.js'
+    //   }
+    // },
 
     // Uglify: pokrocila minifikace JS
     // -------------------------------
 
-    uglify: {
-      head: {
-          src: 'dist/js/script-head.js',
-          dest: 'dist/js/script-head.min.js'
-      },
-      foot: {
-          src: 'dist/js/script.js',
-          dest: 'dist/js/script.min.js'
-      },
-      load_css: {
-          src: 'bower_components/loadcss/loadCSS.js',
-          dest: 'dist/js/lib/load-css.min.js'
-      }
-    },
+    // uglify: {
+    //   head: {
+    //       src: 'dist/js/script-head.js',
+    //       dest: 'dist/js/script-head.min.js'
+    //   },
+    //   foot: {
+    //       src: 'dist/js/script.js',
+    //       dest: 'dist/js/script.min.js'
+    //   },
+    //   load_css: {
+    //       src: 'bower_components/loadcss/loadCSS.js',
+    //       dest: 'dist/js/lib/load-css.min.js'
+    //   }
+    // },
 
     // 3) Obrazky
     // ==========
@@ -326,42 +236,19 @@ module.exports = function(grunt) {
     // Spusti server na http://localhost:3000/, externe pak na
     // adrese, kterou zobrazi pri startu.
     // Injectuje zmeny v bsFiles bez nutnosti reloadu.
-    // Synchronizuje zobrazeni napric zarizeni
-    // Je potreba mit nastaveny lokalne bezi Apache na vasecocky.localhost kvuli
-    // pouziti PHP v prototypu.
+    // Synchronizuje zobrazeni napric zarizenimi.
 
     browserSync: {
       dev: {
           bsFiles: {
               src : [
-                'dist/css/*.css',
-                'style-guide/css/*.css'
+                'dist/css/*.css'
               ]
           },
           options: {
               watchTask: true,
-              proxy: 'vasecocky.localhost'
+              proxy: 'sites.localhost'
           }
-      }
-    },
-
-    // ftp-deploy
-    // ----------
-
-    // Nahraje kompletni souboury na http://vc.vzhurudolu.cz
-    // TODO zatim nenasazeno – je to hrozne pomaly a neignoruje to soubory v 'exclusions'.
-
-    'ftp-deploy': {
-      build: {
-        auth: {
-          host: 'machal.savana-hosting.cz',
-          port: 21,
-          authKey: 'vc_vzhurudolu_cz'
-        },
-        src: ['./'],
-        dest: '/',
-        exclusions: ['.git/', '.gitignore', '.ftppass',
-          'src/', 'bower_components/', 'node_modules/']
       }
     },
 
@@ -375,10 +262,10 @@ module.exports = function(grunt) {
         files: 'src/less/**/*.less',
         tasks: ['css']
       },
-      js: {
+/*TODO      js: {
         files: 'src/js/*.js',
         tasks: ['js']
-      }
+      }*/
     },
 
   });
@@ -389,11 +276,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('svg', ['imagemin:content_img', 'svg2png']);
   grunt.registerTask('css', ['less:default', 'autoprefixer']);
-  grunt.registerTask('css:dev', ['less:default', 'browserSync', 'watch']);
-  grunt.registerTask('css:dist', ['less:sourcemaps', 'autoprefixer', 'criticalcss', 'cssmin']);
   grunt.registerTask('img', ['imagemin', 'svg2png', 'responsive_images']);
   grunt.registerTask('js', ['concat', 'uglify']);
-  grunt.registerTask('deploy', ['css:dist', 'js' /*'ftp-deploy'*/]);
-  grunt.registerTask('default', ['css', 'js', 'browserSync', 'watch']);
+  grunt.registerTask('default', ['css', /*'js',*/ 'browserSync', 'watch']);
 
 };
