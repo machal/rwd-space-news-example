@@ -248,7 +248,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('svg', ['imagemin:content_img', 'svg2png']);
   grunt.registerTask('css', ['less:default', 'autoprefixer']);
-  grunt.registerTask('img', ['imagemin', 'svg2png']);
+  grunt.registerTask('img', ['imagemin', 'svg2png']); // TODOBACK
   grunt.registerTask('js', ['concat', 'uglify']);
   grunt.registerTask('default', ['css', /*'js',*/ 'browserSync', 'watch']);
 
