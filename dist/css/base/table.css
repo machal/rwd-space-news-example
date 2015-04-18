@@ -1,0 +1,21 @@
+/*
+
+--- Tabulka v obsahu ---
+
+*/
+table {
+  border-collapse: collapse;
+  border-top: 1px solid #ccc;
+  width: 100%;
+}
+td,
+th {
+  font: 12px/18px Arial, sans-serif;
+  text-align: left;
+  padding: 10px 5px;
+  border-bottom: 1px solid #ccc;
+}
+td img,
+th img {
+  vertical-align: middle;
+}
