@@ -16,11 +16,20 @@
   padding: 0;
 }
 
-// V tisku nezobrazujeme 
+// V tisku nezobrazujeme
 
 @media print {
   .nav {
     display: none;
+  }
+}
+
+// Schovani na malych displejich
+
+.nav {
+  @media only screen and (max-width: 599px) {
+    height: 0;
+    overflow: hidden;
   }
 }
 
@@ -53,7 +62,7 @@ b .nav-item,
 
 // Layout pro siroke dipleje
 
-@media screen and (min-width: 470px) {
+@media only screen and (min-width: 600px) {
 
   .nav li {
     width: 20%;
