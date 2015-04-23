@@ -1,15 +1,7 @@
 /*
-Grunt tasky
-===========
 
-TODO pořádky
-
-1) CSS
-2) Javascript
-3) Obrazky
-4) browserSync & watch
-5) Alias tasky
-
+Ukoly nad assety: kombilace CSS, JS, zmensovani IMG…
+=====================================================
 
 */
 
@@ -107,14 +99,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // criticalcss TODO
-    // -----------
-
-    // Automaticky vytahuje kritický CSS kód (nad zlomem), který se má vložit do hlavičky
-    // stránky jako inline.
-
-    // criticalcss: {
-    // },
 
     // CSSmin
     // ------
@@ -135,8 +119,8 @@ module.exports = function(grunt) {
         }
     },
 
-    // 2) Javascript
-    // =============
+    // Javascript
+    // ==========
 
     browserify : {
       main : {
@@ -149,7 +133,7 @@ module.exports = function(grunt) {
     },
 
     // Uglify: minifikace JS
-    // -------------------------------
+    // ---------------------
 
     uglify: {
       script: {
@@ -215,8 +199,8 @@ module.exports = function(grunt) {
       }
     },
 
-    // 4) browserSync, ftp-deploy a watch
-    // ==================================
+    // 4) browserSync a watch
+    // ======================
 
     // browserSync
     // -----------
@@ -260,11 +244,10 @@ module.exports = function(grunt) {
 
 
   // 5) Alias tasky
-  // =============
+  // ==============
 
-  grunt.registerTask('svg', ['imagemin:content_img', 'svg2png']);
   grunt.registerTask('css', ['less:default', 'autoprefixer']);
-  grunt.registerTask('img', ['imagemin', 'svg2png']); // TODOBACK
+  grunt.registerTask('img', ['imagemin', 'svg2png']);
   grunt.registerTask('js', ['browserify', 'uglify']);
   grunt.registerTask('default', ['copy:fancybox', 'css', 'js', 'browserSync', 'watch']);
 
