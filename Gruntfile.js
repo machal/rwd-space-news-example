@@ -75,9 +75,7 @@ module.exports = function(grunt) {
           // sourceMapRootpath:
           // Cesta k LESS souborum jek budou volany ze souboru se SM.
           sourceMapRootpath: '/',
-          // Komprimovat?
-          // TODO: komprimujeme timto jen proto, ze contrib-css odstranoval
-          // sourcemapy
+          // Komprimovat timto? contrib-css odstranoval sourcemapy
           //compress: true,
         }
       }
@@ -105,7 +103,7 @@ module.exports = function(grunt) {
 
     // Minifikujeme inlinované CSSka.
     // Nepoužíváme na style.css, protože odstraňuje SourceMapy. Ale bylo
-    // by to efektivnější než minifikovat LESSem. (TODO)
+    // by to efektivnější než minifikovat LESSem.
 
     cssmin: {
       inline_css: {
