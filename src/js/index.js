@@ -1,7 +1,8 @@
+var $ = require('jquery');
+require('fancybox')($);
+
 $(document).ready(function(){
 
-  // Inicializace Fancyboxu TODO
-
-	$(".fancybox").fancybox();
+	$('.fancybox').fancybox();
 
 })

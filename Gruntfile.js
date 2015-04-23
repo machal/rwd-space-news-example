@@ -2,6 +2,8 @@
 Grunt tasky
 ===========
 
+TODO pořádky
+
 1) CSS
 2) Javascript
 3) Obrazky
@@ -24,8 +26,35 @@ module.exports = function(grunt) {
   // Nastaveni tasku
   grunt.initConfig({
 
-    // 1) CSS
+    pkg: grunt.file.readJSON('package.json'),
+
+    // Rename
     // ======
+
+    copy: {
+      fancybox: {
+        files: [
+          {
+            expand: true,
+            cwd: 'node_modules/fancybox/dist/css/',
+            src: ['jquery.fancybox.css'],
+            dest: 'src/less/lib/',
+            rename: function(dest, src) {
+              return dest + src.replace(/\.css$/, ".less");
+            }
+          },
+          {
+            expand: true,
+            cwd: 'node_modules/fancybox/dist/img/',
+            src: ['*.*'],
+            dest: 'src/img/'
+          },
+        ]
+      },
+    },
+
+    // CSS
+    // ===
 
     // LESS kompilace
     // --------------
@@ -109,47 +138,25 @@ module.exports = function(grunt) {
     // 2) Javascript
     // =============
 
-    // TODO
+    browserify : {
+      main : {
+        files : { 'dist/js/script.js' : ['src/js/index.js'] }
+      },
+      options: {
+        transform: ['debowerify'],
+        debug: true
+      }
+    },
 
-    // Concat: spojovani JS do jednoho
+    // Uglify: minifikace JS
     // -------------------------------
 
-    // concat: {
-    //   // Inlinovany JS do hlavicky
-    //   head: {
-    //     src: [
-    //       'src/js/index-head.js', // Nase detekce atd.
-    //       'bower_components/picturefill/dist/picturefill.js', // Picturefill + matchmedia
-    //       'bower_components/loadcss/loadCSS.js' // Asynchronni nacitani CSS
-    //     ],
-    //     dest: 'dist/js/script-head.js'
-    //   },
-    //   // Zbytek JS do paticky
-    //   foot: {
-    //     src: [
-    //       'src/js/index.js',
-    //     ],
-    //     dest: 'dist/js/script.js'
-    //   }
-    // },
-
-    // Uglify: pokrocila minifikace JS
-    // -------------------------------
-
-    // uglify: {
-    //   head: {
-    //       src: 'dist/js/script-head.js',
-    //       dest: 'dist/js/script-head.min.js'
-    //   },
-    //   foot: {
-    //       src: 'dist/js/script.js',
-    //       dest: 'dist/js/script.min.js'
-    //   },
-    //   load_css: {
-    //       src: 'bower_components/loadcss/loadCSS.js',
-    //       dest: 'dist/js/lib/load-css.min.js'
-    //   }
-    // },
+    uglify: {
+      script: {
+          src: 'dist/js/script.js',
+          dest: 'dist/js/script.min.js'
+      }
+    },
 
     // 3) Obrazky
     // ==========
@@ -158,6 +165,15 @@ module.exports = function(grunt) {
     // --------------------------------------------
 
     imagemin: {
+      // Root
+      root: {
+        files: [{
+          expand: true,
+          cwd: 'src/img/',
+          src: ['**/*.jpg','**/*.png','**/*.gif'],
+          dest: 'dist/img/'
+        }]
+      },
       // Bitmapy v designu
       bitmap: {
         files: [{
@@ -234,10 +250,10 @@ module.exports = function(grunt) {
         files: 'src/less/**/*.less',
         tasks: ['css']
       },
-/*TODO      js: {
+      js: {
         files: 'src/js/*.js',
         tasks: ['js']
-      }*/
+      }
     },
 
   });
@@ -249,7 +265,7 @@ module.exports = function(grunt) {
   grunt.registerTask('svg', ['imagemin:content_img', 'svg2png']);
   grunt.registerTask('css', ['less:default', 'autoprefixer']);
   grunt.registerTask('img', ['imagemin', 'svg2png']); // TODOBACK
-  grunt.registerTask('js', ['concat', 'uglify']);
-  grunt.registerTask('default', ['css', /*'js',*/ 'browserSync', 'watch']);
+  grunt.registerTask('js', ['browserify', 'uglify']);
+  grunt.registerTask('default', ['copy:fancybox', 'css', 'js', 'browserSync', 'watch']);
 
 };
