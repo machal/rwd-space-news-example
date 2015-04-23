@@ -1,32 +1,42 @@
-# Příklad ke školení responzivního designu
+# Příklad ke školením responzivního designu
 
-**Autor:** Martin Michálek, martin@vzhurudolu.cz  
-**Školení:** http://www.vzhurudolu.cz/kurzy/responzivni-webdesign
+Responzivní design: http://www.vzhurudolu.cz/kurzy/responzivni-design
+Pokročilý responzivní design: http://www.vzhurudolu.cz/kurzy/pokrocily-responzivni-design
+
+**Autor:** Martin Michálek, martin@vzhurudolu.cz
 
 ## Struktura stylů
 
-* `less/index.less` – hlavní LESS soubor
-* `less/base/` – komponenty pro textový, vertikální design
-* `less/components/` – pokročilejší komponenty uživatelského rozhraní
-* `less/core/` – pomocné funkce, mixiny…
-* `less/layout/` – layout stránky
+* `src/less/index.less` – hlavní LESS soubor
+* `src/less/base/` – komponenty pro textový, vertikální design
+* `src/less/components/` – pokročilejší komponenty uživatelského rozhraní
+* `src/less/core/` – pomocné funkce, mixiny…
+* `src/less/layout/` – layout stránky
+* `src/less/lib/` – knihovny
 
-Kompilujeme do `css/index.css`.
+Kompilujeme do `dist/css/style.css`.
 
 
 ## Javascript
 
-* `js/index.js` – hlavní JS soubor
-* `js/respond.js` – zapíná podporu Media Queries v IE7+
-* `js/picturefill-1.js` – polyfill pro responzivní obrázky, stabilní verze
-* `js/picturefill-2.js` – polyfill pro responzivní obrázky, vychází ze specifikace Responsive Images
-* `js/modernizr.js` – detekce podpory HTML5/CSS3 vlastností, Media Queries v JS…
-* `js/toggle-nav.js` – zapínání/vypínání navigace na malých displejích
+* `src/js/index.js` – hlavní JS soubor
 
-## Knihovny
+Závislosti řešíme pomocí Browserify.
 
-* `js/fancybox/` – lightbox pro zobrazování obrázků
-* `js/normalize/` – sjednocení výchozího nastavení CSS napříč prohlížeči
+## Závislosti a npm
+
+Závislosti (jQuery, Fancybox nebo Normalize.CSS) spravujeme pomocí https://www.npmjs.com/.
+
+Viz `package.json`.
+
+## Grunt a automatizace
+
+Důležité tásky:
+
+* `grunt` - spustí vše a nastartuje vývojový server, otevře prohlížeč s nastartovanou synchronizací a pustí hlídání změn
+* Pro jednotlivé typy assetů se může hodit `grunt img`, `grunt css`, `grunt js`.
+
+
 
 
 
